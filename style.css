@@ -1,0 +1,27 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+a{
+    text-decoration: none;
+}
+main{
+    text-align: center;
+}
+kbd{
+    border: 1px solid red;
+    width: 2em;
+    height: 2em;
+    display: inline-block;
+    text-transform: uppercase;/*变大写字母*/
+    position: relative;
+}
+kbd > button{
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    display: none;
+}
+kbd:hover > button{
+    display: inline-block;
+}
