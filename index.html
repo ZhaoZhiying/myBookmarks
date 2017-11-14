@@ -9,7 +9,12 @@
 </head>
 <body>
    <header class="header-wrapper">
-        <div class = "header"></div>
+        <div class = "search">
+            <form action="https://www.baidu.com/">
+                <input type = "text">
+                <input class = "baidu" type = "button" onclick = "window.open('http://www.imooc.com','_blank')" value="百度一下" >
+            </form>  
+        </div>
    </header> 
 
    <main>
@@ -50,6 +55,7 @@
             var button = tag('button')
                 button.textContent = '编辑'
                 button.id = id//给每个button一个id
+                button.className = 'edit'
                 button.onclick = function(xzkjcnxlkcjlk){ //添加button点击事件
                     var button2 = xzkjcnxlkcjlk['target'] //xzkjcnxlkcjlk['target']就是用户点击的元素
                     var img2 = button2.previousSibling
@@ -60,7 +66,7 @@
                     img2.onerror = function(xxx){//监听错误
                         xxx.target.src = '//i.loli.net/2017/11/13/5a098d2da448b.png'
                 }
-                    localStorage.setItem('zzz',JSON.stringify(hash))//只要hash变了，就把hash存到zzz里
+                        localStorage.setItem('zzz',JSON.stringify(hash))//只要hash变了，就把hash存到zzz里
                 }
                 return button
         }
@@ -93,7 +99,7 @@
                 'r': 'rapdb.dna.affrc.go.jp',
                 't': 'tencent.com', 
                 'y': 'youtube.com', 
-                'u': 'ui.cn' , 
+                'u': 'ui.cn', 
                 'i': 'iqiyi.com', 
                 'o': 'opera.com', 
                 'p': 'peise.net',

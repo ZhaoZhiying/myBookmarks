@@ -11,7 +11,7 @@ a{
 }
 .header-wrapper{    
 }
-.header-wrapper .header{
+.header-wrapper .search{
     height: 100px;
     max-width: 950px;
     border-radius: 6px;
@@ -40,20 +40,23 @@ kbd{
     cursor: pointer;
 }
 button{
-    border: 0;
-    background-color: none;
+    border: none;
+    text-decoration: none;
+}
+.edit{
+   font-size: 6px; 
 }
 kbd > button{
     position: absolute;
     right: 4px;
     top: 4px;
-    display: none;
     background: #fca807;
     border-radius: 4px;
     color: #fff;
+    display: none; /*隐藏*/
 }
 kbd:hover > button{
-    display: inline-block;
+    display: inline-block; /*hover时出现*/
 }
 .key{
     width: 47px;
