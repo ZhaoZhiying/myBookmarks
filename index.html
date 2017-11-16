@@ -9,8 +9,8 @@
 </head>
 <body>
    <header class="header-wrapper">
-        <div class = "search">
-            <form action="https://www.baidu.com/">
+        <div class = "search clearfix">
+            <form class="" action="https://www.baidu.com/">
                 <input type = "text">
                 <input class = "baidu" type = "button" onclick = "window.open('http://www.imooc.com','_blank')" value="百度一下" >
             </form>  
@@ -124,7 +124,7 @@
                 //取出 localStorage 中的 zzz 对应的 hash，优先取用户之前设置的 hash
                 var hashInlocalStorage = getFromLocalStorage('zzz')
                 if(hashInlocalStorage){
-                hash = hashInlocalStorage
+                    hash = hashInlocalStorage
                 }
                 return {
                     "keys": keys, //二维数组

@@ -9,7 +9,12 @@ body{
 a{
     text-decoration: none;
 }
-.header-wrapper{    
+.clearfix::after{
+    content: '';
+    display: block;
+    clear: both;
+}
+.header-wrapper{
 }
 .header-wrapper .search{
     height: 100px;
