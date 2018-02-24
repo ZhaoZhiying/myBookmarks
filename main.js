@@ -39,32 +39,24 @@ if(hashInLocalStorage){
     hash = hashInLocalStorage
 }
 
-index = 0
+var index = 0
 while(index<keys.length){
     var div = document.createElement('div')
+    div.className = 'row'
+
     main.appendChild(div)
+
     var row = keys[index]
-    index2 = 0
+    var index2 = 0
     while(index2<row.length){
-        var kbd = document.createElement('kbd')
-        kbd.className = 'key'
         var span = document.createElement('span')
         span.textContent = row[index2]
         span.className = 'text'
+
         var button = document.createElement('button')
         button.textContent = '编辑'
         button.id = row[index2]
         button.className = 'button'
-        var img = document.createElement('img')
-        if(hash[row[index2]]){
-            img.src = 'http://' + hash[row[index2]] + '/favicon.ico'
-        }else{
-            img.src = 'https://i.loli.net/2018/02/24/5a9176127f204.png'//自己设置默认icon
-        }
-        img.onerror = function(e){
-            e.target.src = 'https://i.loli.net/2018/02/24/5a9176127f204.png'//自己设置默认icon
-        }
-
         button.onclick = function(butonPressed){
             var button2 = butonPressed.target
             var img2 = button2.previousSibling
@@ -74,15 +66,28 @@ while(index<keys.length){
             hash[key] = userType 
             img2.src = 'http://' + userType + '/favicon.ico'
             img2.onerror = function(e){
-                e.target.src = 'https://i.loli.net/2018/02/24/5a9176127f204.png'
+                e.target.src = '//i.loli.net/2018/02/24/5a9176127f204.png'
             }
             //只要 hash 变了，就将新 hash 存到 newHash 里
             localStorage.setItem('newHash', JSON.stringify(hash))
         }
+
+        var img = document.createElement('img')
+        if(hash[row[index2]]){
+            img.src = 'http://' + hash[row[index2]] + '/favicon.ico'
+        }else{
+            img.src = '//i.loli.net/2018/02/24/5a9176127f204.png'//自己设置默认icon
+        }
+        img.onerror = function(e){
+            e.target.src = '//i.loli.net/2018/02/24/5a9176127f204.png'//自己设置默认icon
+        }
+        
+        var kbd = document.createElement('kbd')
+        kbd.className = 'key'
         kbd.appendChild(button)
-        div.appendChild(kbd)
         kbd.appendChild(span)
         kbd.appendChild(img)
+        div.appendChild(kbd)
         index2 += 1
     }
     index += 1
