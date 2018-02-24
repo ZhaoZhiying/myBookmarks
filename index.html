@@ -1,174 +1,19 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="zh-Hans">
+    <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>我的导航</title>
+    <title>nav-demo</title>
     <link rel="stylesheet" href="./style.css">
 </head>
 <body>
-   <header class="header-wrapper">
-        <div class = "search clearfix">
-            <form class="" action="https://www.baidu.com/">
-                <input type = "text">
-                <input class = "baidu" type = "button" onclick = "window.open('http://www.imooc.com','_blank')" value="百度一下" >
-            </form>  
-        </div>
-   </header> 
+    <header></header>
 
-   <main>
-       <div class="main-wrapper" id="main"></div>
-       </style>
-   </main>
-   <footer></footer>
-   <script>
-        //1.初始化数据
-        var hashA = init()
-        var keys = hashA['keys']
-        var hash = hashA['hash']
- 
-        //2.生成键盘
-        //遍历 keys ， 生成 kbd 标签
-        generateKeyboard(keys, hash)
+    <main id="main" class="main"></main>
 
-        //3：监听用户动作
-        listenToUser(hash)
+    <footer></footer>
 
-        //下面是工具函数       
-        function getFromLocalStorage(name){ 
-            return JSON.parse(localStorage.getItem(name) || 'null')
-        }
-
-        function tag(tagName){ //将document.createElement替tag换成
-                return document.createElement(tagName)
-        }
-
-        function createSpan(textContent){
-            var span = tag('span')
-            span.textContent = textContent//span里的内容为row里的第n个 
-            span.className = 'text'
-            return span
-        }
-
-        function createButton(id){
-            var button = tag('button')
-                button.textContent = '编辑'
-                button.id = id//给每个button一个id
-                button.className = 'edit'
-                button.onclick = function(xzkjcnxlkcjlk){ //添加button点击事件
-                    var button2 = xzkjcnxlkcjlk['target'] //xzkjcnxlkcjlk['target']就是用户点击的元素
-                    var img2 = button2.previousSibling
-                    var key = button2['id'] // q w e
-                    var x = prompt('给我一个网址')//让用户输入一个网址，比如：qq.com
-                    hash[key] = x //比如在Q输入qq.com，hash的q = qq.com
-                    img2.src = 'http://' + x + '/favicon.ico'
-                    img2.onerror = function(xxx){//监听错误
-                        xxx.target.src = '//i.loli.net/2017/11/13/5a098d2da448b.png'
-                }
-                        localStorage.setItem('zzz',JSON.stringify(hash))//只要hash变了，就把hash存到zzz里
-                }
-                return button
-        }
-
-        function createImage(domain){ //domain域名
-            var img = tag('img')
-                if(domain){//如果存在
-                    img.src = 'http://' + domain + '/favicon.ico'
-                }
-                else{
-                    img.src = '//i.loli.net/2017/11/13/5a098d2da448b.png'
-                }
-                img.onerror = function(xxx){//监听错误
-                    xxx.target.src = '//i.loli.net/2017/11/13/5a098d2da448b.png'
-                }
-                return img
-        }
-
-        function init(){
-            var keys = {
-                '0':['q','w','e','r','t','y','u','i','o','p'], //'0': {0:'q',1:'w',2:'e',3:'r',4:'t',5:'y',6:'u',7:'i',8:'o',9:'p',length:10},
-                '1':['a','s','d','f','g','h','j','k','l'],
-                '2':['z','x','c','v','b','n','m'],
-                length: 3
-            }
-            var hash = {
-                'q': 'qq.com',
-                'w': 'weibo.com', 
-                'e': 'ele.me', 
-                'r': 'rapdb.dna.affrc.go.jp',
-                't': 'tencent.com', 
-                'y': 'youtube.com', 
-                'u': 'ui.cn', 
-                'i': 'iqiyi.com', 
-                'o': 'opera.com', 
-                'p': 'peise.net',
-                'a': 'amazon.cn', 
-                's': 'sohu.com', 
-                'd': 'douban.com', 
-                'f': 'facebook.com', 
-                'g': 'gome.com.cn',
-                'h': 'hongshu.com', 
-                'j': 'javascript.ruanyifeng.com',
-                'k': 'kuwo.cn', 
-                'l': 'lol.qq.com', 
-                'z': 'zhihu.com', 
-                's': 'suning.com', 
-                'x': 'xiami.com',
-                'c': 'cnr.cn', 
-                'v': 'vivo.com.cn', 
-                'b': 'bilibili.com',
-                'n': 'newcger.com', 
-                'm': 'mi.com', 
-                }//hash不是数组，不需要length]
-                //取出 localStorage 中的 zzz 对应的 hash，优先取用户之前设置的 hash
-                var hashInlocalStorage = getFromLocalStorage('zzz')
-                if(hashInlocalStorage){
-                    hash = hashInlocalStorage
-                }
-                return {
-                    "keys": keys, //二维数组
-                    "hash": hash //hash
-                }
-            }
-
-        function generateKeyboard(keys, hash){
-                for(var index = 0; index < keys['length']; index = index + 1){
-                    var div = tag('div')//声明div容器，创建一个标签div，document.createElement（必须是字符串）
-                    div.className = 'row'
-                    
-                    main.appendChild(div)//给main一个儿子div
-                    
-                    var row = keys[index]//row的取值是：第一个数组 第二个数组 第三个数组 ； 每次循环赋值给row一次
-
-                    for(var index2 = 0; index2 < row['length']; index2 = index2 + 1){//每个div里创建10个kbd 第一次小于10 第二次小于9 第三次小于7
-                        var span = createSpan(row[index2])
-                        
-                        var button = createButton(row[index2])
-
-                        var img = createImage(hash[row[index2]])
-
-                        var kbd = tag('kbd')//声明kbd容器，创建一个标签kbd
-                        kbd.className = 'key' //给kbd一个class(类名)
-
-                        kbd.appendChild(img)
-                        kbd.appendChild(span)
-                        kbd.appendChild(button) //img span button放到kbd里
-                        
-                        div.appendChild(kbd)//kbd放到div里
-                    } 
-                }
-        }
-
-        function listenToUser(hash){
-            document.onkeypress = function(xzkjcnxlkcjlk){ //用户按键就执行
-                    var key = xzkjcnxlkcjlk['key'] //拿到用户按键信息(页面'右键-检查-console'查看); key对应的是q w e
-                    var website = hash[key] //得到这个键对应的网站
-                    //location.href = 'http://'+website //把当前地址变成新的网站的地址
-                    window.open('http://'+website, '_blank')//新窗口打开网页
-            }
-        }
-
-   </script>
+    <script src="./main.js"></script>
 </body>
 </html>
