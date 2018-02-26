@@ -14,7 +14,7 @@ function init(){
     var keys = {
         '0':['q','w','e','r','t','y','u','i','o','p'], //'0': {0:'q',1:'w',2:'e',3:'r',4:'t',5:'y',6:'u',7:'i',8:'o',9:'p',length:10},
         '1':['a','s','d','f','g','h','j','k','l'],
-        '2':['z','x','c','v','b','n','m'],
+        '2':['z','x','c','v','b','n','m','<'],
         length: 3
     }
     var hash = {
@@ -22,7 +22,7 @@ function init(){
         'w': 'weibo.com', 
         'e': 'ele.me', 
         'r': 'rapdb.dna.affrc.go.jp',
-        't': 'tencent.com', 
+        't': 'tv.cctv.com', 
         'y': 'youtube.com', 
         'u': 'ui.cn', 
         'i': 'iqiyi.com', 
@@ -45,6 +45,7 @@ function init(){
         'b': 'bilibili.com',
         'n': 'newcger.com', 
         'm': 'mi.com', 
+        '~': 'zhaozhiying.github.io/myWeb/',
     }
     //取出 localStorage 中的 newHash 对应的 hash
     var hashInLocalStorage = getFromLocalStorage('newHash')
@@ -80,8 +81,7 @@ function generateKeyboard(keys, hash){
             kbd.appendChild(span)
             kbd.appendChild(img)
             kbd.appendChild(button)
-            div.appendChild(kbd)
-            
+            div.appendChild(kbd)   
         }
     }
 }
@@ -111,7 +111,7 @@ function getFromLocalStorage(name){
  
  function createButton(id){
      var button = tag('button')
-         button.textContent = '编辑'
+         button.textContent = 'e'
          button.id = id
          button.className = 'button'
          button.onclick = function(butonPressed){
@@ -123,7 +123,7 @@ function getFromLocalStorage(name){
              hash[key] = userType 
              img2.src = 'http://' + userType + '/favicon.ico'
              img2.onerror = function(e){
-                 e.target.src = '//i.loli.net/2018/02/24/5a9176127f204.png'
+                 e.target.src = '//i.loli.net/2018/02/25/5a92b5ffd699d.png'
              }
              //只要 hash 变了，就将新 hash 存到 newHash 里
              localStorage.setItem('newHash', JSON.stringify(hash))
@@ -136,10 +136,10 @@ function getFromLocalStorage(name){
          if(domain){
              img.src = 'http://' + domain + '/favicon.ico'
          }else{
-             img.src = '//i.loli.net/2018/02/24/5a9176127f204.png'
+             img.src = '//i.loli.net/2018/02/25/5a92b5ffd699d.png'
          }
          img.onerror = function(e){
-             e.target.src = '//i.loli.net/2018/02/24/5a9176127f204.png'
+             e.target.src = '//i.loli.net/2018/02/25/5a92b5ffd699d.png'
          }
          return img
  }
