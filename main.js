@@ -64,7 +64,7 @@ function generateKeyboard(keys, hash){
         var div = tag('div')
         div.className = 'row'
     
-        main.appendChild(div)
+        wrapper.appendChild(div)
     
         var row = keys[index]
     
