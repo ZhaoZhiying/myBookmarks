@@ -7,9 +7,37 @@
 a{
     text-decoration: none;
 }
+input{
+    border-style: none;
+}
 .header{
     background: #333;
     height: 88px;
+    text-align: center;
+}
+.header .search{
+    border: 1px solid transparent;
+    position: relative;
+    width: 900px;
+    margin: 0 auto;
+}
+.header .search .form{
+    position: absolute;
+    right: 0;
+}
+.header .search .form .write{
+    width: 200px;
+    height: 24px;
+    margin-top: 32px;
+    margin-right: 8px;
+    border-radius: 4px;
+    padding-left: 8px;
+    background: #FDFFFD;
+}
+.header .search .form .baidu{
+    padding: 3px 6px;
+    border-radius: 4px;
+    color: #666;
 }
 .main{
     border: 1px blue transparent;
@@ -21,12 +49,15 @@ a{
     background: #fbfcf7 url(./img/bg.png) center center no-repeat;
     position: relative;
 }
-.wrapper{
+.main .wrapper{
     width: 100%;
     height: 100%;
     padding: 80px 1em 160px 0;
 }
-.row .key{
+.main .wrapper .row{
+    cursor: pointer;
+}
+.main .wrapper .row .key{
     border-top: 1px solid #fff;
     box-shadow: inset 0 0 2em rgba(0,0,0,.05), 0 3px 0 #ddd, 0 3px 2px rgba(0,0,0,.5);
     background: radial-gradient(#ffffff,#f6f6f6,#ededed);
@@ -39,7 +70,7 @@ a{
     border-radius: 10px;
     z-index: 1;
 }
-.row .key > .text{
+.main .wrapper .row .key > .text{
     border: 1px solid transparent;
     font-size: 20px;
     color: #989998;
@@ -47,21 +78,27 @@ a{
     display: inline-block;
     margin: 18px 0;
 }
-.row .key > .button{
+.main .wrapper .row .key > .button{
     border: 1px solid #eee;
     position: absolute;
     right: 2px;
     top: 2px;
-    line-height: 6px;
+    line-height: 8px;
     padding: 4px;
     border-radius: 50%;
+    background: #17A15E;
+    color: white;
+    text-transform: uppercase;
     cursor: pointer;
     display: none;
 }
-.row .key:hover > .button{
+.main .wrapper .row .key:hover > .button{
     display: inline-block;
 }
-.row .key > img{
+.main .wrapper .row .key > .button:hover{
+    background: #117645;
+}
+.main .wrapper .row .key > img{
     background: #fff;
     width: 16px;
     height: 16px;
@@ -71,37 +108,37 @@ a{
     left: 2px;
     bottom: 2px;
 }
-.lotus-left{
+.main .lotus-left{
     position: absolute;
     width: 340px;
     bottom: 0;
     left: 0;
 }
-.petal-left{
+.main .petal-left{
     position: absolute;
     top: 10px;
     left: 10px;
     width: 100px;
 }
-.petal1-right{
+.main .petal1-right{
     position: absolute;
     width: 200px;
     right: -10px;
     top: 10px;
 }
-.petal2-right{
+.main .petal2-right{
     position: absolute;
     width: 180px;
     right: 10px;
     bottom: 40px;  
 }
-.flower1-right{
+.main .flower1-right{
     position: absolute;
     width: 40px;
     right: 34px;
     bottom: 50px;
 }
-.flower2-right{
+.main .flower2-right{
     position: absolute;
     width: 24px;
     right: 90px;
@@ -111,12 +148,12 @@ a{
     border: 1px blue transparent;
     background: #FEFFFE ;
     height: 176px;
-    position: relative;
 }
 .footer .part1{
     border: 1px yellow transparent;
-    height: 30%;
+    height: 40%;
     text-align: center;
+    position: relative;
 }
 .footer .part1 > .line{
     position: absolute;
@@ -143,5 +180,5 @@ a{
 .footer .part2{
    border: 1px red transparent;
    background: #fbfcf7 url(./img/bg.png) center center no-repeat;
-   height: 70%;
+   height: 60%;
 }

@@ -61,7 +61,7 @@ function init(){
 
 function generateKeyboard(keys, hash){
     for(var index=0; index<keys.length; index += 1){
-        var div = tag('div')
+        var div = document.createElement('div')
         div.className = 'row'
     
         wrapper.appendChild(div)
@@ -75,7 +75,7 @@ function generateKeyboard(keys, hash){
     
             var img = createImage(hash[row[index2]])
     
-            var kbd = tag('kbd')
+            var kbd = document.createElement('kbd')
             kbd.className = 'key'
     
             kbd.appendChild(span)
@@ -87,7 +87,7 @@ function generateKeyboard(keys, hash){
 }
 
 function listenToKeyboard(hash){
-     return document.onkeypress = function(keyPressed){
+    return document.onkeypress = function(keyPressed){
         var key = keyPressed['key'] 
         var website = hash[key] 
         window.open('http://' + website, '_blank')
@@ -98,31 +98,27 @@ function getFromLocalStorage(name){
     return JSON.parse(localStorage.getItem('newHash') || 'null')
  }
  
- function tag(tagName, attributes){
-     return document.createElement(tagName)
- }
- 
  function createSpan(textContent){
-     var span = tag('span')
+     var span = document.createElement('span')
      span.textContent = textContent
      span.className = 'text'
      return span
  }
  
  function createButton(id){
-     var button = tag('button')
+     var button = document.createElement('button')
          button.textContent = 'e'
          button.id = id
          button.className = 'button'
-         button.onclick = function(butonPressed){
-             var button2 = butonPressed.target
-             var img2 = button2.previousSibling
-             var key = button2.id
+         button.onclick = function(buttonPressed){
+             var newButton = buttonPressed.target
+             var newImg = newButton.previousSibling
+             var key = newButton.id
              var userType = prompt('请输入新网址')
              //hash 变更
              hash[key] = userType 
-             img2.src = 'http://' + userType + '/favicon.ico'
-             img2.onerror = function(e){
+             newImg.src = 'http://' + userType + '/favicon.ico'
+             newImg.onerror = function(e){
                  e.target.src = '//i.loli.net/2018/02/25/5a92b5ffd699d.png'
              }
              //只要 hash 变了，就将新 hash 存到 newHash 里
@@ -132,7 +128,7 @@ function getFromLocalStorage(name){
  }
  
  function createImage(domain){
-     var img = tag('img')
+     var img = document.createElement('img')
          if(domain){
              img.src = 'http://' + domain + '/favicon.ico'
          }else{
