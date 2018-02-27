@@ -27,16 +27,16 @@ input{
 }
 .header .search .form .write{
     width: 200px;
-    height: 24px;
+    height: 26px;
     margin-top: 32px;
-    margin-right: 8px;
-    border-radius: 4px;
+    border-radius: 2px;
     padding-left: 8px;
     background: #FDFFFD;
 }
-.header .search .form .baidu{
-    padding: 3px 6px;
-    border-radius: 4px;
+.header .search .form .baidu,
+.header .search .form .google{
+    padding: 4px 8px;
+    border-radius: 2px;
     color: #666;
 }
 .main{
