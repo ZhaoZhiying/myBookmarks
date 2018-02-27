@@ -59,7 +59,7 @@ input{
 }
 .main .wrapper .row .key{
     border-top: 1px solid #fff;
-    box-shadow: inset 0 0 2em rgba(0,0,0,.05), 0 3px 0 #ddd, 0 3px 2px rgba(0,0,0,.5);
+    box-shadow: inset 0 0 2em rgba(0,0,0,0.05), 0 3px 0 #ddd, 0 3px 2px rgba(0,0,0,0.5);;
     background: radial-gradient(#ffffff,#f6f6f6,#ededed);
     width: 72px;
     height: 70px;
@@ -90,6 +90,10 @@ input{
     color: white;
     cursor: pointer;
     display: none;
+}
+.main .wrapper .row .key:hover{
+    border-top: 2px solid rgba(0,0,0,0.2);
+    box-shadow: inset 0 0 2em rgba(0,0,0,0.05), 0 3px 2px rgba(0,0,0,0.3);
 }
 .main .wrapper .row .key:hover > .button{
     display: inline-block;
