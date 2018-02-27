@@ -45,7 +45,6 @@ function init(){
         'b': 'bilibili.com',
         'n': 'newcger.com', 
         'm': 'mi.com', 
-        '~': 'zhaozhiying.github.io/myWeb/',
     }
     //取出 localStorage 中的 newHash 对应的 hash
     var hashInLocalStorage = getFromLocalStorage('newHash')
@@ -56,41 +55,6 @@ function init(){
     return {
         'keys': keys,
         'hash': hash
-    }
-}
-
-function generateKeyboard(keys, hash){
-    for(var index=0; index<keys.length; index += 1){
-        var div = document.createElement('div')
-        div.className = 'row'
-    
-        wrapper.appendChild(div)
-    
-        var row = keys[index]
-    
-        for(var index2 = 0; index2<row.length; index2 += 1){
-            var span = createSpan(row[index2])
-    
-            var button = createButton(row[index2])
-    
-            var img = createImage(hash[row[index2]])
-    
-            var kbd = document.createElement('kbd')
-            kbd.className = 'key'
-    
-            kbd.appendChild(span)
-            kbd.appendChild(img)
-            kbd.appendChild(button)
-            div.appendChild(kbd)   
-        }
-    }
-}
-
-function listenToKeyboard(hash){
-    return document.onkeypress = function(keyPressed){
-        var key = keyPressed['key'] 
-        var website = hash[key] 
-        window.open('http://' + website, '_blank')
     }
 }
 
@@ -107,12 +71,13 @@ function getFromLocalStorage(name){
  
  function createButton(id){
      var button = document.createElement('button')
-         button.textContent = 'e'
+         button.textContent = 'E'
          button.id = id
          button.className = 'button'
          button.onclick = function(buttonPressed){
              var newButton = buttonPressed.target
              var newImg = newButton.previousSibling
+                
              var key = newButton.id
              var userType = prompt('请输入新网址')
              //hash 变更
@@ -139,3 +104,47 @@ function getFromLocalStorage(name){
          }
          return img
  }
+
+ function generateKeyboard(keys, hash){
+    for(var i=0; i<keys.length; i += 1){
+        var div = document.createElement('div')
+        div.className = 'row'
+    
+        wrapper.appendChild(div)
+    
+        var row = keys[i]
+        for(var j = 0; j<row.length; j += 1){
+            
+            var span = createSpan(row[j])
+            
+            var button = createButton(row[j])
+    
+            var img = createImage(hash[row[j]])
+    
+            var kbd = document.createElement('kbd')
+            kbd.className = 'key'
+            
+            kbd.appendChild(span)
+            kbd.appendChild(img)
+            kbd.appendChild(button)
+            div.appendChild(kbd)   
+
+            //鼠标点击事件
+            kbd.id = row[j]
+            kbd.addEventListener('click', function(kbdClick){
+                console.log(kbdClick)
+                var website = hash[kbdClick.target.id]
+                window.open("http://" + website, "_blank")
+            })
+        }
+    }
+}
+
+ function listenToKeyboard(hash){
+    return document.onkeypress = function(keyPressed){
+        console.log(keyPressed)
+        var key = keyPressed['key'] //q w e
+        var website = hash[key] 
+        window.open('http://' + website, '_blank')
+    }
+}
