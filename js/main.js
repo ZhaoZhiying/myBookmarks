@@ -75,19 +75,19 @@ function getFromLocalStorage(name){
          button.id = id
          button.className = 'button'
          button.onclick = function(buttonPressed){
-             var newButton = buttonPressed.target
-             var newImg = newButton.previousSibling
-                
-             var key = newButton.id
-             var userType = prompt('请输入新网址')
-             //hash 变更
-             hash[key] = userType 
-             newImg.src = 'http://' + userType + '/favicon.ico'
-             newImg.onerror = function(e){
-                 e.target.src = '//i.loli.net/2018/02/25/5a92b5ffd699d.png'
-             }
-             //只要 hash 变了，就将新 hash 存到 newHash 里
-             localStorage.setItem('newHash', JSON.stringify(hash))
+            buttonPressed.stopPropagation()
+            var newButton = buttonPressed.target
+            var newImg = newButton.previousSibling
+            var key = newButton.id
+            var userType = prompt('请输入新网址')
+            //hash 变更
+            hash[key] = userType 
+            newImg.src = 'http://' + userType + '/favicon.ico'
+            newImg.onerror = function(e){
+                e.target.src = '//i.loli.net/2018/02/25/5a92b5ffd699d.png'
+            }
+            //只要 hash 变了，就将新 hash 存到 newHash 里
+            localStorage.setItem('newHash', JSON.stringify(hash))
          }
          return button
  }
@@ -110,29 +110,24 @@ function getFromLocalStorage(name){
         var div = document.createElement('div')
         div.className = 'row'
     
-        wrapper.appendChild(div)
+        keyboard.appendChild(div)
     
         var row = keys[i]
         for(var j = 0; j<row.length; j += 1){
-            
             var span = createSpan(row[j])
-            
             var button = createButton(row[j])
-    
             var img = createImage(hash[row[j]])
-    
             var kbd = document.createElement('kbd')
             kbd.className = 'key'
-            
+            kbd.id = row[j]
             kbd.appendChild(span)
             kbd.appendChild(img)
             kbd.appendChild(button)
             div.appendChild(kbd)   
 
             //鼠标点击事件
-            kbd.id = row[j]
             kbd.addEventListener('click', function(kbdClick){
-                console.log(kbdClick)
+                kbdClick.stopPropagation() 
                 var website = hash[kbdClick.target.id]
                 window.open("http://" + website, "_blank")
             })
@@ -141,8 +136,7 @@ function getFromLocalStorage(name){
 }
 
  function listenToKeyboard(hash){
-    return document.onkeypress = function(keyPressed){
-        console.log(keyPressed)
+    document.onkeypress = function(keyPressed){
         var key = keyPressed['key'] //q w e
         var website = hash[key] 
         window.open('http://' + website, '_blank')

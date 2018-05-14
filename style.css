@@ -1,22 +1,11 @@
-*{
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    font-family: '微软雅黑';
-}
-a{
-    text-decoration: none;
-}
-input{
-    border-style: none;
-}
+*{margin: 0;padding: 0;box-sizing: border-box;font-family: "Helvetica Neue", Helvetica, Arial, "PingFang SC", "Hiragino Sans GB", "Heiti SC", "Microsoft YaHei", "WenQuanYi Micro Hei", sans-serif;}
+a{text-decoration: none;}
+input{border-style: none;}
 .header{
     background: #333;
     height: 88px;
-    text-align: center;
 }
 .header .search{
-    border: 1px solid transparent;
     position: relative;
     width: 900px;
     margin: 0 auto;
@@ -39,25 +28,28 @@ input{
     border-radius: 2px;
     color: #666;
 }
+/* main */
 .main{
-    border: 1px blue transparent;
     width: 100vw;
-    max-height: 500px;
+    height: 500px;
     text-align: center; 
     display: flex; 
     justify-content: center; 
     background: #fbfcf7 url(./img/bg.png) center center no-repeat;
     position: relative;
 }
-.main .wrapper{
+.main .keyboard{
     width: 100%;
     height: 100%;
-    padding: 80px 1em 160px 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
 }
-.main .wrapper .row{
+.main .keyboard .row{
     cursor: pointer;
 }
-.main .wrapper .row .key{
+.main .keyboard .row .key{
     border-top: 1px solid #fff;
     box-shadow: inset 0 0 2em rgba(0,0,0,0.05), 0 3px 0 #ddd, 0 3px 2px rgba(0,0,0,0.5);;
     background: radial-gradient(#ffffff,#f6f6f6,#ededed);
@@ -70,15 +62,14 @@ input{
     border-radius: 10px;
     z-index: 1;
 }
-.main .wrapper .row .key > .text{
-    border: 1px solid transparent;
+.main .keyboard .row .key > .text{
     font-size: 20px;
     color: #989998;
     text-transform: uppercase;
     display: inline-block;
     margin: 18px 0;
 }
-.main .wrapper .row .key > .button{
+.main .keyboard .row .key > .button{
     border: 1px solid #eee;
     position: absolute;
     right: 2px;
@@ -91,17 +82,17 @@ input{
     cursor: pointer;
     display: none;
 }
-.main .wrapper .row .key:hover{
+.main .keyboard .row .key:hover{
     border-top: 2px solid rgba(0,0,0,0.2);
     box-shadow: inset 0 0 2em rgba(0,0,0,0.05), 0 3px 2px rgba(0,0,0,0.3);
 }
-.main .wrapper .row .key:hover > .button{
+.main .keyboard .row .key:hover > .button{
     display: inline-block;
 }
-.main .wrapper .row .key > .button:hover{
+.main .keyboard .row .key > .button:hover{
     background: #117645;
 }
-.main .wrapper .row .key > img{
+.main .keyboard .row .key > img{
     background: #fff;
     width: 16px;
     height: 16px;
@@ -147,14 +138,13 @@ input{
     right: 90px;
     bottom: 300px;
 }
+/* footer */
 .footer{
-    border: 1px blue transparent;
     background: #FEFFFE ;
-    height: 150px;
+    height: 120px;
 }
 .footer .part1{
-    border: 1px yellow transparent;
-    height: 40%;
+    height: 50%;
     text-align: center;
     position: relative;
 }
@@ -166,22 +156,18 @@ input{
     background: #CFD0CF;
 }
 .footer .part1 .text-wrapper{
-    border: 1px solid transparent;
     width: 900px;
-    position: relative;
-    left: 50%;
-    transform: translateX(-50%);
-    -webkit-transform: translateX(-50%);
+    height: 100%;
+    display: flex;
+    align-items: center;
+    margin: 0 auto;
 }
 .footer .part1 .text-wrapper > .text{
     font-size: 12px;
+    font-weight: 200;
     color: #999;
-    position: absolute;
-    top: 18px;
-    left: 0;
 }
 .footer .part2{
-   border: 1px red transparent;
    background: #fbfcf7 url(./img/bg.png) center center no-repeat;
-   height: 60%;
+   height: 50%;
 }
